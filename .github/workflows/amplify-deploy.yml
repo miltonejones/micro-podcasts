@@ -66,13 +66,8 @@ jobs:
           npm install -g @aws-amplify/cli
           amplify pull --appId $AMPLIFY_APP_ID --envName $AMPLIFY_ENVIRONMENT --yes
           git checkout -- amplify/backend/backend-config.json amplify/backend/auth amplify/backend/api
-          echo "--- backend-config.json after restore ---"
-          cat amplify/backend/backend-config.json
-          echo "--- amplify-meta.json after pull (pre-push) ---"
-          cat amplify/backend/amplify-meta.json || echo "(no amplify-meta.json)"
+          node scripts/seed-amplify-meta.mjs
           amplify push --yes 2>&1 | tee /tmp/amplify-push.log
-          echo "--- amplify-meta.json after push ---"
-          cat amplify/backend/amplify-meta.json || echo "(no amplify-meta.json)"
           amplify publish --yes 2>&1 | tee /tmp/amplify-publish.log
           ! grep -q '🛑' /tmp/amplify-push.log /tmp/amplify-publish.log
 
