@@ -43,6 +43,20 @@ jobs:
           role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
           aws-region: ${{ env.AWS_REGION }}
 
+      - name: Write AWS credentials file for Amplify CLI
+        run: |
+          mkdir -p ~/.aws
+          cat > ~/.aws/credentials <<CREDS
+          [default]
+          aws_access_key_id=$AWS_ACCESS_KEY_ID
+          aws_secret_access_key=$AWS_SECRET_ACCESS_KEY
+          aws_session_token=$AWS_SESSION_TOKEN
+          CREDS
+          cat > ~/.aws/config <<CONFIG
+          [default]
+          region=$AWS_REGION
+          CONFIG
+
       - name: Deploy to AWS Amplify
         env:
           AMPLIFY_APP_ID: d1sh153wstyrpi
