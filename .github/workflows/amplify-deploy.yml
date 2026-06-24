@@ -12,7 +12,7 @@ env:
 
 permissions:
   id-token: write
-  contents: read
+  contents: write
 
 jobs:
   build-and-deploy:
@@ -66,10 +66,11 @@ jobs:
         with:
           script: |
             const status = '${{ job.status }}';
+            const environment = '${{ github.ref == 'refs/heads/main' && 'production' || 'staging' }}';
             const emoji = status === 'success' ? '✅' : '❌';
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
+            github.rest.repos.createCommitComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: `${emoji} Deployment to ${{ env.AMPLIFY_ENVIRONMENT }} ${{ job.status }}`
+              commit_sha: context.sha,
+              body: `${emoji} Deployment to ${environment} ${status}`
             });
