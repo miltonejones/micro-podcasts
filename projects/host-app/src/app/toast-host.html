@@ -1,0 +1,13 @@
+<div class="toast-container position-fixed top-0 end-0 p-3">
+  @if (message(); as msg) {
+    <div class="toast" [class.show]="visible()" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <i class="fa-solid fa-podcast"></i>
+        <strong class="me-auto toast-title">{{ msg.title }}</strong>
+        <small class="toast-caption">{{ msg.caption }}</small>
+        <button type="button" class="btn-close" aria-label="Close" (click)="close()"></button>
+      </div>
+      <div class="toast-body d-flex align-items-center gap-1">{{ msg.body }}</div>
+    </div>
+  }
+</div>

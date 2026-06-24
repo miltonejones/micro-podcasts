@@ -51,6 +51,13 @@ amplify/backend/function/*/src/node_modules/
 # Storybook
 storybook-static/
 build-storybook.log
+storybook.log
+
+# Logs
+dev-server.log
+
+# Generated docs
+documentation.json
 
 # Environment files
 .env
@@ -61,3 +68,25 @@ build-storybook.log
 *.tgz
 *.tar.gz
 .cache/
+
+#amplify-do-not-edit-begin
+amplify/\#current-cloud-backend
+amplify/.config/local-*
+amplify/logs
+amplify/mock-data
+amplify/mock-api-resources
+amplify/backend/amplify-meta.json
+amplify/backend/.temp
+build/
+dist/
+node_modules/
+aws-exports.js
+awsconfiguration.json
+amplifyconfiguration.json
+amplifyconfiguration.dart
+amplify-build-config.json
+amplify-gradle-config.json
+amplifytools.xcconfig
+.secret-*
+**.sample
+#amplify-do-not-edit-end

@@ -10,6 +10,10 @@ env:
   AWS_REGION: us-east-1
   NODE_VERSION: '20'
 
+permissions:
+  id-token: write
+  contents: write
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -39,13 +43,28 @@ jobs:
           role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
           aws-region: ${{ env.AWS_REGION }}
 
+      - name: Write AWS credentials file for Amplify CLI
+        run: |
+          mkdir -p ~/.aws
+          cat > ~/.aws/credentials <<CREDS
+          [default]
+          aws_access_key_id=$AWS_ACCESS_KEY_ID
+          aws_secret_access_key=$AWS_SECRET_ACCESS_KEY
+          aws_session_token=$AWS_SESSION_TOKEN
+          CREDS
+          cat > ~/.aws/config <<CONFIG
+          [default]
+          region=$AWS_REGION
+          CONFIG
+
       - name: Deploy to AWS Amplify
         env:
+          AMPLIFY_APP_ID: d1sh153wstyrpi
           AMPLIFY_ENVIRONMENT: ${{ github.ref == 'refs/heads/main' && 'production' || 'staging' }}
         run: |
           npm install -g @aws-amplify/cli
-          amplify init --amplify ${{ secrets.AMPLIFY_CONFIG }} --yes
-          amplify publish --yes --environment $AMPLIFY_ENVIRONMENT
+          amplify pull --appId $AMPLIFY_APP_ID --envName $AMPLIFY_ENVIRONMENT --yes
+          amplify publish --yes
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
@@ -61,10 +80,11 @@ jobs:
         with:
           script: |
             const status = '${{ job.status }}';
+            const environment = '${{ github.ref == 'refs/heads/main' && 'production' || 'staging' }}';
             const emoji = status === 'success' ? '✅' : '❌';
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
+            github.rest.repos.createCommitComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: `${emoji} Deployment to ${{ env.AMPLIFY_ENVIRONMENT }} ${{ job.status }}`
+              commit_sha: context.sha,
+              body: `${emoji} Deployment to ${environment} ${status}`
             });

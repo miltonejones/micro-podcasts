@@ -1,0 +1,41 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-micropodcasts-dev-ad8d4-authRole",
+      "UnauthRoleArn": "arn:aws:iam::123823813021:role/amplify-micropodcasts-dev-ad8d4-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::123823813021:role/amplify-micropodcasts-dev-ad8d4-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-micropodcasts-dev-ad8d4-deployment",
+      "UnauthRoleName": "amplify-micropodcasts-dev-ad8d4-unauthRole",
+      "StackName": "amplify-micropodcasts-dev-ad8d4",
+      "StackId": "arn:aws:cloudformation:us-east-1:123823813021:stack/amplify-micropodcasts-dev-ad8d4/0bf784d0-6f9f-11f1-ac49-0affddfe7073",
+      "AmplifyAppId": "d1sh153wstyrpi"
+    }
+  },
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-micropodcasts-staging-83e22-authRole",
+      "UnauthRoleArn": "arn:aws:iam::123823813021:role/amplify-micropodcasts-staging-83e22-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::123823813021:role/amplify-micropodcasts-staging-83e22-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-micropodcasts-staging-83e22-deployment",
+      "UnauthRoleName": "amplify-micropodcasts-staging-83e22-unauthRole",
+      "StackName": "amplify-micropodcasts-staging-83e22",
+      "StackId": "arn:aws:cloudformation:us-east-1:123823813021:stack/amplify-micropodcasts-staging-83e22/f3e3b3c0-6fa1-11f1-821e-0e27fb6491f1",
+      "AmplifyAppId": "d1sh153wstyrpi"
+    }
+  },
+  "production": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-micropodcasts-production-b984d-authRole",
+      "UnauthRoleArn": "arn:aws:iam::123823813021:role/amplify-micropodcasts-production-b984d-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::123823813021:role/amplify-micropodcasts-production-b984d-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-micropodcasts-production-b984d-deployment",
+      "UnauthRoleName": "amplify-micropodcasts-production-b984d-unauthRole",
+      "StackName": "amplify-micropodcasts-production-b984d",
+      "StackId": "arn:aws:cloudformation:us-east-1:123823813021:stack/amplify-micropodcasts-production-b984d/1b087440-6fa2-11f1-a499-0affc5436c0d",
+      "AmplifyAppId": "d1sh153wstyrpi"
+    }
+  }
+}

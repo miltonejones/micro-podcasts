@@ -1,0 +1,19 @@
+:host {
+  /* Let the inner .col-2 div be the actual flex item inside the parent .row,
+     instead of this host element wrapping it in its own block box. */
+  display: contents;
+}
+
+.podcast-card-img {
+  border-radius: 8px;
+  object-fit: cover;
+  height: 150px;
+}
+
+.podcast-card-title {
+  line-height: 1.2;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
