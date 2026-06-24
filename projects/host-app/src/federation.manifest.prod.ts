@@ -3,5 +3,6 @@ export const federationManifest = {
   'search': '/search/remoteEntry.json',
   'categories': '/categories/remoteEntry.json',
   'subscriptions': '/subscriptions/remoteEntry.json',
-  'detail': '/detail/remoteEntry.json'
+  'detail': '/detail/remoteEntry.json',
+  'login': '/login/remoteEntry.json'
 };

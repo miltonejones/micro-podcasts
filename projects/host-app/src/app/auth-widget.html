@@ -1,0 +1,10 @@
+@if (auth.isAuthenticated()) {
+  <div class="dropdown">
+    <button class="btn btn-outline-light btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
+      <i class="fa-solid fa-user"></i> {{ auth.currentUserEmail() }}
+    </button>
+    <ul class="dropdown-menu dropdown-menu-end">
+      <li><button class="dropdown-item" (click)="signOut()">Sign Out</button></li>
+    </ul>
+  </div>
+}

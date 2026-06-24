@@ -90,3 +90,7 @@ amplifytools.xcconfig
 .secret-*
 **.sample
 #amplify-do-not-edit-end
+
+# Committed placeholder so local/CI builds work before an environment has
+# been provisioned - amplify push/publish overwrites it with real values.
+!projects/shared-utils/src/aws-exports.js

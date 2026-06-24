@@ -1,0 +1,92 @@
+<div class="login-page d-flex align-items-center justify-content-center">
+  <div class="login-card">
+    <div class="login-brand text-center mb-4">
+      <i class="fa-solid fa-podcast"></i>
+      <h1>STATE<b>CAST</b></h1>
+      <p class="tagline">Your podcasts, everywhere you go.</p>
+    </div>
+
+    @if (error()) {
+      <div class="alert alert-danger py-2">{{ error() }}</div>
+    }
+
+    @switch (mode()) {
+      @case ('signin') {
+        <form (submit)="onSignInSubmit($event, emailInput.value, passwordInput.value)">
+          <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input #emailInput type="email" class="form-control" required autocomplete="username" autofocus />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input
+              #passwordInput
+              type="password"
+              class="form-control"
+              required
+              autocomplete="current-password"
+            />
+          </div>
+          <button type="submit" class="btn login-submit w-100" [disabled]="busy()">
+            @if (busy()) {
+              <span class="spinner-border spinner-border-sm me-2"></span>
+            }
+            Sign In
+          </button>
+        </form>
+        <p class="text-center mt-4 mb-0 switch-line">
+          New to STATECAST? <a class="cursor-pointer" (click)="switchMode('signup')">Create an account</a>
+        </p>
+      }
+      @case ('signup') {
+        <form (submit)="onSignUpSubmit($event, emailInput.value, passwordInput.value)">
+          <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input #emailInput type="email" class="form-control" required autocomplete="username" autofocus />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input
+              #passwordInput
+              type="password"
+              class="form-control"
+              required
+              minlength="8"
+              autocomplete="new-password"
+            />
+            <div class="form-text">At least 8 characters.</div>
+          </div>
+          <button type="submit" class="btn login-submit w-100" [disabled]="busy()">
+            @if (busy()) {
+              <span class="spinner-border spinner-border-sm me-2"></span>
+            }
+            Create Account
+          </button>
+        </form>
+        <p class="text-center mt-4 mb-0 switch-line">
+          Already have an account? <a class="cursor-pointer" (click)="switchMode('signin')">Sign in</a>
+        </p>
+      }
+      @case ('confirm') {
+        <p class="text-center confirm-copy">
+          We sent a verification code to <strong>{{ pendingEmail() }}</strong>.
+        </p>
+        <form (submit)="onConfirmSubmit($event, codeInput.value)">
+          <div class="mb-3">
+            <label class="form-label">Verification Code</label>
+            <input #codeInput type="text" class="form-control text-center" required autofocus />
+          </div>
+          <button type="submit" class="btn login-submit w-100" [disabled]="busy()">
+            @if (busy()) {
+              <span class="spinner-border spinner-border-sm me-2"></span>
+            }
+            Verify
+          </button>
+        </form>
+        <p class="text-center mt-4 mb-0 switch-line">
+          <a class="cursor-pointer" (click)="switchMode('signin')">Back to sign in</a>
+        </p>
+      }
+    }
+  </div>
+</div>

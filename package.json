@@ -5,8 +5,8 @@
     "ng": "ng",
     "start": "ng serve",
     "restart": "bash stop.sh ;bash start.sh",
-    "build": "ng build shared-utils && ng build home && ng build search && ng build categories && ng build subscriptions && ng build detail && ng build host-app && node scripts/assemble-remotes.mjs",
-    "build:prod": "ng build shared-utils && ng build home --configuration production && ng build search --configuration production && ng build categories --configuration production && ng build subscriptions --configuration production && ng build detail --configuration production && ng build host-app --configuration production && node scripts/assemble-remotes.mjs",
+    "build": "ng build shared-utils && ng build home && ng build search && ng build categories && ng build subscriptions && ng build detail && ng build login && ng build host-app && node scripts/assemble-remotes.mjs",
+    "build:prod": "ng build shared-utils && ng build home --configuration production && ng build search --configuration production && ng build categories --configuration production && ng build subscriptions --configuration production && ng build detail --configuration production && ng build login --configuration production && ng build host-app --configuration production && node scripts/assemble-remotes.mjs",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "storybook": "ng run host-app:storybook",
@@ -36,6 +36,7 @@
     "@angular/platform-browser": "^21.0.0",
     "@angular/router": "^21.0.0",
     "@softarc/native-federation-node": "^3.3.4",
+    "aws-amplify": "^6.18.0",
     "es-module-shims": "^2.8.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
