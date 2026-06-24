@@ -1,0 +1,25 @@
+# Amplify build configuration
+version: 1
+
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - npm ci
+    build:
+      commands:
+        - npm run build
+  artifacts:
+    baseDirectory: dist/host-app
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - node_modules/**/*
+      - .angular/cache/**/*
+
+backend:
+  phases:
+    build:
+      commands:
+        - echo "Backend build phase"
