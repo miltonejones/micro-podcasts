@@ -31,7 +31,7 @@
 
 .login-brand i {
   font-size: 2.5rem;
-  color: rgb(25, 118, 210);
+  color: var(--color-accent, #3f6b91);
 }
 
 .login-brand h1 {
@@ -39,7 +39,7 @@
   font-weight: 700;
   margin: 0.5rem 0 0.25rem;
   letter-spacing: 0.02em;
-  color: rgb(25, 118, 210);
+  color: var(--color-accent, #3f6b91);
 }
 
 .login-brand h1 b {
@@ -65,7 +65,7 @@
 
 .login-card .form-control:focus {
   background: rgba(255, 255, 255, 0.09);
-  border-color: rgb(25, 118, 210);
+  border-color: var(--color-accent, #3f6b91);
   box-shadow: 0 0 0 0.2rem rgba(25, 118, 210, 0.25);
   color: #f1f5f9;
 }
@@ -79,17 +79,21 @@
 }
 
 .login-submit {
-  background: rgb(25, 118, 210);
+  background: var(--color-accent, #3f6b91);
   border: none;
   color: #fff;
   font-weight: 600;
   padding: 0.6rem 0;
   border-radius: 8px;
+  transition: background var(--transition-fast, 160ms ease), transform var(--transition-fast, 160ms ease),
+    box-shadow var(--transition-fast, 160ms ease);
 }
 
 .login-submit:hover:not(:disabled) {
-  background: rgb(21, 101, 184);
+  background: var(--color-accent-hover, #335a7a);
   color: #fff;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md, 0 6px 20px rgba(15, 23, 42, 0.08));
 }
 
 .login-submit:disabled {

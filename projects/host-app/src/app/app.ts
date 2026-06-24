@@ -4,6 +4,7 @@ import { filter } from 'rxjs';
 import { SubscriptionsService } from 'shared-utils';
 import { AudioPlayer } from './audio-player';
 import { AuthWidget } from './auth-widget';
+import { EditProfileModal } from './edit-profile-modal';
 import { EpisodeQueue } from './episode-queue';
 import { ToastHost } from './toast-host';
 
@@ -24,7 +25,7 @@ function isLoginUrl(url: string): boolean {
 
 @Component({
   selector: 'app-root',
-  imports: [RouterLink, RouterOutlet, AudioPlayer, AuthWidget, EpisodeQueue, ToastHost],
+  imports: [RouterLink, RouterOutlet, AudioPlayer, AuthWidget, EditProfileModal, EpisodeQueue, ToastHost],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })

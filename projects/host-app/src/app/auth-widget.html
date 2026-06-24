@@ -1,10 +1,31 @@
 @if (auth.isAuthenticated()) {
   <div class="dropdown">
-    <button class="btn btn-outline-light btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
-      <i class="fa-solid fa-user"></i> {{ auth.currentUserEmail() }}
+    <button
+      class="btn btn-outline-light btn-sm dropdown-toggle d-flex align-items-center gap-2"
+      type="button"
+      data-bs-toggle="dropdown"
+    >
+      <span class="auth-avatar">
+        @if (profile.photoUrl()) {
+          <img [src]="profile.photoUrl()" alt="" />
+        } @else {
+          <i class="fa-solid fa-user"></i>
+        }
+      </span>
+      {{ profile.displayName() || auth.currentUserEmail() }}
     </button>
     <ul class="dropdown-menu dropdown-menu-end">
-      <li><button class="dropdown-item" (click)="signOut()">Sign Out</button></li>
+      <li>
+        <button class="dropdown-item" (click)="editProfile()">
+          <i class="fa-solid fa-pen me-2"></i>Edit Profile
+        </button>
+      </li>
+      <li><hr class="dropdown-divider" /></li>
+      <li>
+        <button class="dropdown-item" (click)="signOut()">
+          <i class="fa-solid fa-arrow-right-from-bracket me-2"></i>Sign Out
+        </button>
+      </li>
     </ul>
   </div>
 }
