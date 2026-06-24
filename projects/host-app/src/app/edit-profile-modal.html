@@ -1,0 +1,54 @@
+@if (panel.isOpen()) {
+  <div class="offcanvas-backdrop fade show" (click)="close()"></div>
+
+  <div class="profile-modal" role="dialog" aria-modal="true" aria-label="Edit profile">
+    <div class="profile-modal-header">
+      <b>Edit Profile</b>
+      <button type="button" class="btn-close" aria-label="Close" (click)="close()"></button>
+    </div>
+
+    <div class="profile-modal-body">
+      <div class="profile-photo-wrap">
+        <div class="profile-photo" [class.empty]="!photoPreview()" (click)="pickPhoto()">
+          @if (photoPreview()) {
+            <img [src]="photoPreview()" alt="Profile photo" />
+          } @else {
+            <i class="fa-solid fa-user"></i>
+          }
+          <div class="profile-photo-overlay">
+            <i class="fa-solid fa-camera"></i>
+          </div>
+        </div>
+        <input
+          #fileInput
+          type="file"
+          accept="image/*"
+          class="visually-hidden"
+          (change)="onPhotoSelected($event)"
+        />
+        @if (photoPreview()) {
+          <button type="button" class="btn btn-link btn-sm remove-photo" (click)="removePhoto()">
+            Remove photo
+          </button>
+        }
+      </div>
+
+      <div class="mb-1">
+        <label class="form-label">Name</label>
+        <input
+          #nameInput
+          type="text"
+          class="form-control"
+          [value]="profile.displayName()"
+          placeholder="Your name"
+          autofocus
+        />
+      </div>
+    </div>
+
+    <div class="profile-modal-footer">
+      <button type="button" class="btn btn-light" (click)="close()">Cancel</button>
+      <button type="button" class="btn btn-primary" (click)="save()">Save</button>
+    </div>
+  </div>
+}

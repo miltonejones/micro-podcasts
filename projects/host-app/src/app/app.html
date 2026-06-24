@@ -5,7 +5,7 @@
 } @else {
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container-fluid">
-      <a class="navbar-brand fw-bold cursor-pointer" style="color: rgb(25, 118, 210)" routerLink="/">
+      <a class="navbar-brand fw-bold cursor-pointer" style="color: var(--color-accent)" routerLink="/">
         <i class="fa-solid fa-podcast" style="color: white"></i>
         <span class="brand-text">STATE<b style="color: white">CAST</b></span>
       </a>
@@ -51,13 +51,16 @@
         </ul>
 
         <form class="d-flex flex-grow-1 flex-lg-grow-0 me-2" (submit)="onSearch($event, searchInput.value)">
-          <input
-            #searchInput
-            class="form-control me-2"
-            type="search"
-            placeholder="Search podcasts..."
-            aria-label="Search"
-          />
+          <div class="search-wrap me-2">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input
+              #searchInput
+              class="form-control"
+              type="search"
+              placeholder="Search podcasts..."
+              aria-label="Search"
+            />
+          </div>
         </form>
 
         <app-auth-widget />
@@ -80,4 +83,5 @@
 
   <app-episode-queue />
   <app-audio-player />
+  <app-edit-profile-modal />
 }
