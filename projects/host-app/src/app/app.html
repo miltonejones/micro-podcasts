@@ -1,0 +1,77 @@
+<app-toast-host />
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold cursor-pointer" style="color: rgb(25, 118, 210)" routerLink="/">
+      <i class="fa-solid fa-podcast" style="color: white"></i>
+      <span class="brand-text">STATE<b style="color: white">CAST</b></span>
+    </a>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link cursor-pointer" routerLink="/" [class.active]="activeSection() === 'home'">
+            <i class="fa-solid fa-house"></i> Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link cursor-pointer"
+            routerLink="/categories"
+            [class.active]="activeSection() === 'categories'"
+          >
+            <i class="fa-solid fa-book"></i> Categories
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link cursor-pointer"
+            routerLink="/subscriptions"
+            [class.active]="activeSection() === 'subscriptions'"
+          >
+            <i class="fa-solid fa-bookmark"></i> Subscriptions
+            <span class="badge bg-light text-primary">({{ subscriptions.subscriptions().length }})</span>
+          </a>
+        </li>
+      </ul>
+
+      <form class="d-flex flex-grow-1 flex-lg-grow-0" (submit)="onSearch($event, searchInput.value)">
+        <input
+          #searchInput
+          class="form-control me-2"
+          type="search"
+          placeholder="Search podcasts..."
+          aria-label="Search"
+        />
+      </form>
+    </div>
+  </div>
+</nav>
+
+<div class="workspace">
+  <div id="extra"></div>
+  <div id="app" class="row">
+    <router-outlet />
+  </div>
+</div>
+
+<footer>
+  <div><span style="color: rgb(25, 118, 210)">STATE</span><b>CAST</b> &copy;</div>
+  <div class="desktop">An Angular micro-frontend web application</div>
+  <div class="spacer"></div>
+</footer>
+
+<app-episode-queue />
+<app-audio-player />
