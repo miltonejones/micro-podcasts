@@ -8,6 +8,7 @@ export const authGuard: CanActivateFn = async () => {
   const router = inject(Router);
 
   await auth.ready;
+  await auth.syncWithSession();
 
   return auth.isAuthenticated() ? true : router.createUrlTree(['/login']);
 };
@@ -18,6 +19,7 @@ export const guestGuard: CanActivateFn = async () => {
   const router = inject(Router);
 
   await auth.ready;
+  await auth.syncWithSession();
 
   return auth.isAuthenticated() ? router.createUrlTree(['/']) : true;
 };
