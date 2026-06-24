@@ -45,11 +45,12 @@ jobs:
 
       - name: Deploy to AWS Amplify
         env:
+          AMPLIFY_APP_ID: d1sh153wstyrpi
           AMPLIFY_ENVIRONMENT: ${{ github.ref == 'refs/heads/main' && 'production' || 'staging' }}
         run: |
           npm install -g @aws-amplify/cli
-          amplify init --amplify ${{ secrets.AMPLIFY_CONFIG }} --yes
-          amplify publish --yes --environment $AMPLIFY_ENVIRONMENT
+          amplify pull --appId $AMPLIFY_APP_ID --envName $AMPLIFY_ENVIRONMENT --yes
+          amplify publish --yes
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
