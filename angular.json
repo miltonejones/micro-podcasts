@@ -94,7 +94,13 @@
 									"maximumError": "8kB"
 								}
 							],
-							"outputHashing": "all"
+							"outputHashing": "all",
+							"fileReplacements": [
+								{
+									"replace": "projects/host-app/src/federation.manifest.ts",
+									"with": "projects/host-app/src/federation.manifest.prod.ts"
+								}
+							]
 						},
 						"development": {
 							"optimization": false,
