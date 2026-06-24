@@ -10,6 +10,14 @@
       "StackName": "amplify-micropodcasts-dev-ad8d4",
       "StackId": "arn:aws:cloudformation:us-east-1:123823813021:stack/amplify-micropodcasts-dev-ad8d4/0bf784d0-6f9f-11f1-ac49-0affddfe7073",
       "AmplifyAppId": "d1sh153wstyrpi"
+    },
+    "categories": {
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d1sh153wstyrpi",
+          "type": "manual"
+        }
+      }
     }
   },
   "staging": {

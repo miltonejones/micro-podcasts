@@ -62,9 +62,11 @@ jobs:
           AMPLIFY_APP_ID: d1sh153wstyrpi
           AMPLIFY_ENVIRONMENT: ${{ github.ref == 'refs/heads/main' && 'production' || 'staging' }}
         run: |
+          set -o pipefail
           npm install -g @aws-amplify/cli
           amplify pull --appId $AMPLIFY_APP_ID --envName $AMPLIFY_ENVIRONMENT --yes
-          amplify publish --yes
+          amplify publish --yes 2>&1 | tee /tmp/amplify-publish.log
+          ! grep -q '🛑' /tmp/amplify-publish.log
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
