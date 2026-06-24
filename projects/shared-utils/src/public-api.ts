@@ -10,6 +10,7 @@ export * from './lib/domain/track';
 
 export { PodcastQueryService } from './lib/podcast-query.service';
 export type { IPodcastFeed } from './lib/podcast-query.service';
+export { AuthService } from './lib/auth.service';
 export { SubscriptionsService } from './lib/subscriptions.service';
 export { PodcastSelectionService } from './lib/podcast-selection.service';
 export { AudioPlayerCommandService } from './lib/audio-player-command.service';

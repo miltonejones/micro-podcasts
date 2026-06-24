@@ -3,16 +3,13 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../out-tsc/lib",
-    "declaration": true,
-    "declarationMap": true,
+    "outDir": "../../out-tsc/app",
     "types": []
   },
   "include": [
-    "src/**/*.ts",
-    "src/aws-exports.js"
+    "src/**/*.ts"
   ],
   "exclude": [
-    "**/*.spec.ts"
+    "src/**/*.spec.ts"
   ]
 }

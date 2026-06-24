@@ -3,6 +3,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "allowJs": true,
     "strict": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
@@ -49,6 +50,9 @@
     },
     {
       "path": "./projects/detail/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/login/tsconfig.app.json"
     },
     {
       "path": "./projects/shared-utils/tsconfig.lib.json"

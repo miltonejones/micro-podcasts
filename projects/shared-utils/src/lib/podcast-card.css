@@ -1,5 +1,5 @@
 :host {
-  /* Let the inner .col-2 div be the actual flex item inside the parent .row,
+  /* Let the inner .col-* div be the actual flex item inside the parent .row,
      instead of this host element wrapping it in its own block box. */
   display: contents;
 }

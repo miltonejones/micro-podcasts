@@ -3,6 +3,7 @@ import { NavigationEnd, Router, RouterLink, RouterOutlet } from '@angular/router
 import { filter } from 'rxjs';
 import { SubscriptionsService } from 'shared-utils';
 import { AudioPlayer } from './audio-player';
+import { AuthWidget } from './auth-widget';
 import { EpisodeQueue } from './episode-queue';
 import { ToastHost } from './toast-host';
 
@@ -17,9 +18,13 @@ function resolveNavSection(url: string): NavSection {
   return null;
 }
 
+function isLoginUrl(url: string): boolean {
+  return url.split('?')[0].split('/').filter(Boolean)[0] === 'login';
+}
+
 @Component({
   selector: 'app-root',
-  imports: [RouterLink, RouterOutlet, AudioPlayer, EpisodeQueue, ToastHost],
+  imports: [RouterLink, RouterOutlet, AudioPlayer, AuthWidget, EpisodeQueue, ToastHost],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
@@ -29,10 +34,13 @@ export class App {
   private router = inject(Router);
   protected subscriptions = inject(SubscriptionsService);
   activeSection = signal<NavSection>(resolveNavSection(this.router.url));
+  isLoginPage = signal<boolean>(isLoginUrl(this.router.url));
 
   constructor() {
     this.router.events.pipe(filter((event) => event instanceof NavigationEnd)).subscribe((event) => {
-      this.activeSection.set(resolveNavSection((event as NavigationEnd).urlAfterRedirects));
+      const url = (event as NavigationEnd).urlAfterRedirects;
+      this.activeSection.set(resolveNavSection(url));
+      this.isLoginPage.set(isLoginUrl(url));
     });
   }
 

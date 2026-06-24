@@ -1,6 +1,6 @@
 import { cpSync, existsSync, mkdirSync } from 'node:fs';
 
-const remotes = ['home', 'search', 'categories', 'subscriptions', 'detail'];
+const remotes = ['home', 'search', 'categories', 'subscriptions', 'detail', 'login'];
 const targetRoot = 'dist/host-app/browser';
 
 for (const remote of remotes) {

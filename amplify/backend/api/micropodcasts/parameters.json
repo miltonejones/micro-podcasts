@@ -1,0 +1,11 @@
+{
+  "AppSyncApiName": "micropodcasts",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authmicropodcastsf9ee4ffb",
+      "Outputs.UserPoolId"
+    ]
+  }
+}

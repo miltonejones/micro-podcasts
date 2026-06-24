@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define the ports used by the applications
-PORTS=(4200 4301 4302 4303 4304 4305)
+PORTS=(4200 4301 4302 4303 4304 4305 4306)
 
 echo "Attempting to stop Angular apps by port number..."
 

@@ -6,7 +6,7 @@
   "javascript": {
     "framework": "angular",
     "config": {
-      "SourceDir": "src",
+      "SourceDir": "projects/shared-utils/src",
       "DistributionDir": "dist/host-app/browser",
       "BuildCommand": "npm run-script build",
       "StartCommand": "ng serve"

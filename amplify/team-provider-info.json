@@ -17,6 +17,9 @@
           "appId": "d1sh153wstyrpi",
           "type": "manual"
         }
+      },
+      "auth": {
+        "micropodcastsf9ee4ffb": {}
       }
     }
   },
