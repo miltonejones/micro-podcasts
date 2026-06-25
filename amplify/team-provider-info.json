@@ -20,6 +20,9 @@
       },
       "auth": {
         "micropodcastsf9ee4ffb": {}
+      },
+      "api": {
+        "micropodcasts": {}
       }
     }
   },

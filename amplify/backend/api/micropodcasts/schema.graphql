@@ -9,3 +9,9 @@ type PodcastSubscription @model @auth(rules: [{ allow: owner }]) {
   primaryGenreName: String
   trackCount: Int
 }
+
+type TrackProgress @model @auth(rules: [{ allow: owner }]) {
+  id: ID! # the episode guid
+  progress: Float!
+  podcastFeedUrl: String!
+}
