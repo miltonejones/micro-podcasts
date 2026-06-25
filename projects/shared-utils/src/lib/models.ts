@@ -69,6 +69,8 @@ export interface ITrack {
 export interface ITrackMemory {
   progress: number;
   podcastFeedUrl: string;
+  /** Local write time (epoch ms), used to reconcile against the server's updatedAt on sync. */
+  updatedAt?: number;
 }
 
 export interface PaginationResult {
